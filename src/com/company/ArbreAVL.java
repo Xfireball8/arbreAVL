@@ -289,20 +289,21 @@ public class ArbreAVL {
         Integer déséquilibre = déséquilibre(arbre, indiceRacine);
         Integer déséquilibreArbreGauche = déséquilibre(arbre, indiceDuFilsGauche(indiceRacine));
         Integer déséquilibreArbreDroit = déséquilibre(arbre, indiceDuFilsDroit(indiceRacine));
+        // debug System.out.println("D. sag : " + déséquilibreArbreGauche + " D. sad : " + déséquilibreArbreDroit);
 
         if (déséquilibre == 2 ){
-            if (déséquilibreArbreGauche == 1){
+            if (déséquilibreArbreGauche >= 1){
                 // Rotation Droite
                 rotationDroite(arbre,taille);
-            } else if (déséquilibreArbreGauche == -1) {
+            } else if (déséquilibreArbreGauche <= -1) {
                 // Rotation Gauche Droite
                 rotationGaucheDroite(arbre,taille);
             }
         } else if (déséquilibre == -2) {
-            if (déséquilibreArbreGauche == 1) {
+            if (déséquilibreArbreGauche >= 1) {
                 // Rotation Droite Gauche
                 rotationDroiteGauche(arbre, taille);
-            } else if (déséquilibreArbreDroit == -1){
+            } else if (déséquilibreArbreDroit <= -1){
                 // Rotation Gauche
                 rotationGauche(arbre,taille);
             }
@@ -326,7 +327,8 @@ public class ArbreAVL {
         this.arbre[indice_courant] = elem;
         indice_courant = indiceDuPere(indice_courant);
 
-        while (indice_courant != 1){
+        while (indice_courant != 0){
+            //System.out.println("Indice_courant : " + indice_courant + " déséquilibre : " + déséquilibre(this.arbre, indice_courant));
             // Tout sauf le sous arbre
             Integer[] tampon1 = new Integer[numberOfreAlloc*initialBufferSize];
             initAVL(tampon1, numberOfreAlloc*initialBufferSize);
@@ -407,6 +409,7 @@ public class ArbreAVL {
 
                 // rééquilibrer jusqu'au père
                 while (indice_courant != 0) {
+                    //System.out.println("Indice_courant : " + indice_courant + " déséquilibre : " + déséquilibre(this.arbre, indice_courant));
                     Integer[] tampon1 = new Integer[numberOfreAlloc*initialBufferSize];
                     initAVL(tampon1, numberOfreAlloc*initialBufferSize);
                     recopieSaufSousArbre(this.arbre, indiceRacine, tampon1, indiceRacine, indice_courant);
