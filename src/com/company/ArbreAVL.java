@@ -291,7 +291,7 @@ public class ArbreAVL {
         Integer déséquilibreArbreDroit = déséquilibre(arbre, indiceDuFilsDroit(indiceRacine));
         // debug System.out.println("D. sag : " + déséquilibreArbreGauche + " D. sad : " + déséquilibreArbreDroit);
 
-        if (déséquilibre == 2 ){
+        if (déséquilibre >= 2 ){
             if (déséquilibreArbreGauche >= 1){
                 // Rotation Droite
                 rotationDroite(arbre,taille);
@@ -299,7 +299,7 @@ public class ArbreAVL {
                 // Rotation Gauche Droite
                 rotationGaucheDroite(arbre,taille);
             }
-        } else if (déséquilibre == -2) {
+        } else if (déséquilibre <= -2) {
             if (déséquilibreArbreGauche >= 1) {
                 // Rotation Droite Gauche
                 rotationDroiteGauche(arbre, taille);
