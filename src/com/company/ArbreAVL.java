@@ -299,11 +299,18 @@ public class ArbreAVL {
                 // Rotation Gauche Droite
                 rotationGaucheDroite(arbre,taille);
             }
+            else if (déséquilibreArbreGauche == 0) {
+                // Rotation Droite
+                rotationDroite(arbre,taille);}
         } else if (déséquilibre <= -2) {
             if (déséquilibreArbreGauche >= 1) {
                 // Rotation Droite Gauche
                 rotationDroiteGauche(arbre, taille);
             } else if (déséquilibreArbreDroit <= -1){
+                // Rotation Gauche
+                rotationGauche(arbre,taille);
+            }
+            else if (déséquilibreArbreDroit == 0){
                 // Rotation Gauche
                 rotationGauche(arbre,taille);
             }
